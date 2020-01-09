@@ -7,7 +7,7 @@ namespace NewRelic.LogEnrichers.Serilog
 {
     public class NewRelicEnricher : ILogEventEnricher
     {
-        private const string LinkingMetadataKey = "newrelic.linkingmetadata";
+        
 
         private readonly Lazy<IAgent> _nrAgent;
         
@@ -32,7 +32,7 @@ namespace NewRelic.LogEnrichers.Serilog
             if (linkingMetadata != null && linkingMetadata.Keys.Count != 0)
             {
                 // our key is unique enough that we are okay with overwriting it.
-                logEvent.AddOrUpdateProperty(propertyFactory.CreateProperty(LinkingMetadataKey, linkingMetadata));
+                logEvent.AddOrUpdateProperty(propertyFactory.CreateProperty(LoggingExtensions.LinkingMetadataKey, linkingMetadata));
             }
         }
     }

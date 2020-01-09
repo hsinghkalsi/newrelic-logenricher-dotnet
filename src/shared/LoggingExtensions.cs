@@ -24,6 +24,9 @@ namespace NewRelic.LogEnrichers
 
     internal static class LoggingExtensions
     {
+
+        internal const string LinkingMetadataKey = "newrelic.linkingmetadata";
+
         public const string UserPropertyPrefix = "Message Properties.";
 
         public static string GetOutputName(this NewRelicLoggingProperty property)

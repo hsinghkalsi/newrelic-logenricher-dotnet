@@ -23,7 +23,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{076719D4-E458-473C-B79A-276A420C839A}"
 	ProjectSection(SolutionItems) = preProject
 		src\shared\DateTimeExtensions.cs = src\shared\DateTimeExtensions.cs
+		src\shared\DnsUtility.cs = src\shared\DnsUtility.cs
 		src\shared\LoggingExtensions.cs = src\shared\LoggingExtensions.cs
+		src\shared\NewRelicConfiguration.cs = src\shared\NewRelicConfiguration.cs
+		src\shared\NewRelicDataService.cs = src\shared\NewRelicDataService.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serilog", "Serilog", "{66661FF9-086D-4218-9FE4-7F07589E442A}"
@@ -31,6 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serilog", "Serilog", "{6666
 		src\Serilog\ArchitectureDiagram.svg = src\Serilog\ArchitectureDiagram.svg
 		src\Serilog\README.md = src\Serilog\README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{10CE0FC6-1856-4101-8D5D-65C01E24767D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewRelic.LogEnrichers.Serilog.Examples.OpenTelemetry", "examples\NewRelic.LogEnrichers.Serilog.Examples.OpenTelemetry\NewRelic.LogEnrichers.Serilog.Examples.OpenTelemetry.csproj", "{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +57,10 @@ Global
 		{D6B2A9C4-7D80-44FC-BDE6-4F175B4477BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6B2A9C4-7D80-44FC-BDE6-4F175B4477BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6B2A9C4-7D80-44FC-BDE6-4F175B4477BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,7 +68,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1E6F4432-D90A-4E5B-B668-4F966CDDD584} = {66661FF9-086D-4218-9FE4-7F07589E442A}
 		{34C14AEC-2456-4234-8FAD-6044B6196812} = {66661FF9-086D-4218-9FE4-7F07589E442A}
-		{D6B2A9C4-7D80-44FC-BDE6-4F175B4477BC} = {66661FF9-086D-4218-9FE4-7F07589E442A}
+		{D6B2A9C4-7D80-44FC-BDE6-4F175B4477BC} = {10CE0FC6-1856-4101-8D5D-65C01E24767D}
+		{10CE0FC6-1856-4101-8D5D-65C01E24767D} = {66661FF9-086D-4218-9FE4-7F07589E442A}
+		{29C47E89-072C-4627-B4E8-AA9DBFDA5F7A} = {10CE0FC6-1856-4101-8D5D-65C01E24767D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C9155C8-199D-48A5-BB57-38EB738FA89D}

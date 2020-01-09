@@ -37,9 +37,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.2" />
     <PackageReference Include="NewRelic.Agent.Api" Version="8.20.262" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="OpenTelemetry.Api" Version="0.2.0-alpha.100" />
     <PackageReference Include="Serilog" Version="2.5.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,8 +56,16 @@
   <ItemGroup>
     <Compile Include="..\..\shared\DateTimeExtensions.cs" Link="DateTimeExtensions.cs" />
     <Compile Include="..\..\shared\LoggingExtensions.cs" Link="LoggingExtensions.cs" />
+    <Compile Include="..\..\shared\NewRelicConfiguration.cs" Link="NewRelicConfiguration.cs" />
+    <Compile Include="..\..\shared\NewRelicDataService.cs" Link="NewRelicDataService.cs" />
     <None Include="..\..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="..\..\..\NewRelic.LogEnrichers.StrongNameKey.snk" Link="NewRelic.LogEnrichers.StrongNameKey.snk" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="OpenTelemetry">
+      <Version>0.2.0-alpha.100</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
