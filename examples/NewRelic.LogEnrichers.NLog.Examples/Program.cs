@@ -5,6 +5,7 @@ using NewRelic.Api.Agent;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
+using NLog.Layouts;
 
 
 namespace NewRelic.LogEnrichers.NLog.Examples
@@ -43,7 +44,7 @@ namespace NewRelic.LogEnrichers.NLog.Examples
             // This log information will be visible in New Relic Logging. Since 
             // a transaction has not been started, this log message will not be
             // associated to a specific transaction.
-            _logger.Info("Hello, welcome to the Nlog Logs In Context sample app!");
+           _logger.Info("Hello, welcome to the Nlog Logs In Context sample app!");
 
             do
             {
@@ -92,8 +93,27 @@ namespace NewRelic.LogEnrichers.NLog.Examples
             newRelicFileTarget.FileName = Path.Combine(folderPath_NewRelicLogs, "NLogExtensions_NewRelicLogging.json");
             loggerConfig.AddTarget(newRelicFileTarget);
 
+
+            // CONFIGURE NEW RELIC LOGGING.
+            // 1.  Add a file target which writes to a staging location for the log forwarder
+            // 2.  Use the NewRelicCsvLayout which will write the output in the format required by NewRelic, as well
+            //     as adding the contextual information linking transaction data (if applicable) to log events.
+            var newRelicCsvTarget = new FileTarget("NewRelicCsvTarget");
+            var nrCsvlayout= new NewRelicCsvLayout();
+            nrCsvlayout.Delimiter = CsvColumnDelimiterMode.Pipe;
+            nrCsvlayout.WithHeader = false;
+            //var nrVersionColumn = new CsvColumn("newrelic.version","nr1");
+            //nrCsvlayout.Columns.Insert(0,nrVersionColumn);
+            newRelicCsvTarget.Layout = nrCsvlayout;
+            newRelicCsvTarget.FileName = Path.Combine(folderPath_NewRelicLogs, "NLogExtensions_NewRelicLogging.csv");
+            loggerConfig.AddTarget(newRelicCsvTarget);
+
+
             loggerConfig.AddRuleForAllLevels("StandardFileTarget");
             loggerConfig.AddRuleForAllLevels("NewRelicFileTarget");
+            loggerConfig.AddRuleForAllLevels("NewRelicCsvTarget");
+
+
 
             LogManager.Configuration = loggerConfig;
 
